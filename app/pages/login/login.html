@@ -1,0 +1,26 @@
+
+<ion-header>
+
+  <ion-navbar primary>
+    <ion-title>Login Page</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input type="text" name="username" [(ngModel)]="data.username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" name="password" [(ngModel)]="data.password"></ion-input>
+    </ion-item>
+
+    <button primary block (click)="login()">Submit</button>
+  </ion-list>
+</ion-content>
