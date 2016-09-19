@@ -41,9 +41,11 @@ $conn = new mysqli("localhost", "textkhmernews", "Excellent0", "khmernews");
 				$arr[]=$row;
 			}
 			echo json_encode($arr);*/
-			
-		    $sel="SELECT adminID FROM admin WHERE adminName='$username' AND adminPass='$password'";
-		    $result=$conn->query($sel);
+
+			$sel = $conn->prepare("SELECT adminID FROM admin WHERE adminName=? AND adminPass=?");
+			$sel->bind_param("ss", $username, $password);
+		    $sel->execute();
+            $result = $sel->get_result();
 		    $numrow=$result->num_rows;
 		    if($numrow !== 1){
 		      header('HTTP/1.1 401 Unauthorized', true, 401);
